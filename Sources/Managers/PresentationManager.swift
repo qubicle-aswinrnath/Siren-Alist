@@ -120,8 +120,8 @@ extension PresentationManager {
         case .force:
             alertController?.addAction(updateAlertAction(completion: handler))
         case .option:
-            alertController?.addAction(nextTimeAlertAction(completion: handler))
             alertController?.addAction(updateAlertAction(completion: handler))
+            alertController?.addAction(nextTimeAlertAction(completion: handler))
         case .skip:
             alertController?.addAction(updateAlertAction(completion: handler))
             alertController?.addAction(nextTimeAlertAction(completion: handler))
@@ -189,7 +189,7 @@ private extension PresentationManager {
             title = nextTimeButtonTitle
         }
 
-        let action = UIAlertAction(title: title, style: .default) { _ in
+        let action = UIAlertAction(title: title, style: .destructive) { _ in
             self.cleanUp()
             handler?(.nextTime, nil)
             return

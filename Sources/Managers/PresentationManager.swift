@@ -121,10 +121,10 @@ extension PresentationManager {
             alertController?.addAction(updateAlertAction(completion: handler))
         case .option:
             alertController?.addAction(updateAlertAction(completion: handler))
-            alertController?.addAction(nextTimeAlertAction(completion: handler))
+            alertController?.addAction(skipAlertAction(forCurrentAppStoreVersion: currentAppStoreVersion, completion: handler))
         case .skip:
             alertController?.addAction(updateAlertAction(completion: handler))
-            alertController?.addAction(nextTimeAlertAction(completion: handler))
+//            alertController?.addAction(nextTimeAlertAction(completion: handler))
             alertController?.addAction(skipAlertAction(forCurrentAppStoreVersion: currentAppStoreVersion, completion: handler))
         case .none:
             handler?(.unknown, nil)
@@ -212,7 +212,7 @@ private extension PresentationManager {
             title = skipButtonTitle
         }
 
-        let action = UIAlertAction(title: title, style: .default) { _ in
+        let action = UIAlertAction(title: title, style: .destructive) { _ in
             self.cleanUp()
             handler?(.skip, currentAppStoreVersion)
             return

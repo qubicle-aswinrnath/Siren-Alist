@@ -272,7 +272,7 @@ private extension Siren {
         switch alertAction {
         case .appStore:
             launchAppStore()
-        case .skip:
+        case .skip, .nextTime:
             guard let currentAppStoreVersion = currentAppStoreVersion else { return }
             UserDefaults.storedSkippedVersion = currentAppStoreVersion
             UserDefaults.standard.synchronize()
